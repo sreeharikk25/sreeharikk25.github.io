@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta
     name="description"
-    content="Portfolio of Sreehari Krishnakumar – FPGA / RTL / HLS engineer with experience in RADAR systems, NetFPGA, and ML accelerators."
+    content="Portfolio of Sreehari Krishnakumar – FPGA / RTL / HLS engineer with experience in RADAR systems, NetFPGA, GPU acceleration, and ML accelerators."
   />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -24,52 +24,31 @@
       --text-muted: #9ca3af;
       --border-soft: #1f2937;
       --chip-bg: #111827;
-      --max-width: 960px;
+      --max-width: 980px;
       --radius-xl: 1.25rem;
       --radius-lg: 0.9rem;
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
-      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont,
-        "Segoe UI", sans-serif;
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background: radial-gradient(circle at top, #111827 0, #020617 55%, #000 100%);
       color: var(--text-main);
       -webkit-font-smoothing: antialiased;
     }
 
-    a {
-      color: var(--accent);
-      text-decoration: none;
-    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
 
-    a:hover {
-      text-decoration: underline;
-    }
+    .page { min-height: 100vh; padding: 32px 16px 56px; display: flex; justify-content: center; }
+    .container { width: 100%; max-width: var(--max-width); }
 
-    .page {
-      min-height: 100vh;
-      padding: 32px 16px 56px;
-      display: flex;
-      justify-content: center;
-    }
-
-    .container {
-      width: 100%;
-      max-width: var(--max-width);
-    }
-
-    /* Header / Hero */
+    /* Hero */
     .hero {
-      background: linear-gradient(
-          135deg,
-          rgba(59, 130, 246, 0.12),
-          transparent 55%
-        ),
+      background:
+        linear-gradient(135deg, rgba(59, 130, 246, 0.12), transparent 55%),
         radial-gradient(circle at 0 0, rgba(236, 72, 153, 0.16), transparent 55%),
         var(--bg-elevated);
       border-radius: 1.5rem;
@@ -88,83 +67,34 @@
       position: absolute;
       inset: 0;
       pointer-events: none;
-      background-image: radial-gradient(
-          circle at top left,
-          rgba(148, 163, 184, 0.4) 0,
-          transparent 55%
-        ),
-        radial-gradient(
-          circle at bottom right,
-          rgba(15, 23, 42, 0.9) 0,
-          transparent 55%
-        );
+      background-image:
+        radial-gradient(circle at top left, rgba(148, 163, 184, 0.4) 0, transparent 55%),
+        radial-gradient(circle at bottom right, rgba(15, 23, 42, 0.9) 0, transparent 55%);
       mix-blend-mode: soft-light;
       opacity: 0.4;
     }
 
-    .hero-main,
-    .hero-side {
-      position: relative;
-      z-index: 1;
-    }
+    .hero-main, .hero-side { position: relative; z-index: 1; }
 
-    .hero-title {
-      font-size: clamp(1.9rem, 3vw, 2.3rem);
-      font-weight: 700;
-      letter-spacing: 0.03em;
-      margin: 0 0 4px;
-    }
-
-    .hero-subtitle {
-      font-size: 0.98rem;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      color: var(--accent);
-      font-weight: 600;
-      margin-bottom: 12px;
-    }
-
-    .hero-summary {
-      font-size: 0.97rem;
-      color: var(--text-muted);
-      max-width: 36rem;
-      line-height: 1.6;
-      margin-bottom: 18px;
-    }
+    .hero-title { font-size: clamp(1.9rem, 3vw, 2.3rem); font-weight: 700; letter-spacing: 0.03em; margin: 0 0 4px; }
+    .hero-subtitle { font-size: 0.98rem; text-transform: uppercase; letter-spacing: 0.18em; color: var(--accent); font-weight: 600; margin-bottom: 12px; }
+    .hero-summary { font-size: 0.97rem; color: var(--text-muted); max-width: 40rem; line-height: 1.6; margin-bottom: 18px; }
 
     .hero-contact {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px 18px;
-      font-size: 0.88rem;
-      color: var(--text-muted);
+      display: flex; flex-wrap: wrap; gap: 10px 18px;
+      font-size: 0.88rem; color: var(--text-muted);
     }
+    .hero-contact span { display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; }
 
-    .hero-contact span {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      white-space: nowrap;
-    }
-
-    .hero-badge-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 16px;
-    }
+    .hero-badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
 
     .badge {
-      font-size: 0.78rem;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      padding: 5px 10px;
-      border-radius: 999px;
+      font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.12em;
+      padding: 5px 10px; border-radius: 999px;
       border: 1px solid rgba(148, 163, 184, 0.35);
       background: rgba(15, 23, 42, 0.8);
       color: var(--text-muted);
     }
-
     .badge-accent {
       background: var(--accent-soft);
       border-color: rgba(59, 130, 246, 0.6);
@@ -178,26 +108,9 @@
       padding: 14px 14px 10px;
       backdrop-filter: blur(16px);
     }
-
-    .hero-side-title {
-      font-size: 0.85rem;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      color: var(--text-muted);
-      margin-bottom: 4px;
-    }
-
-    .hero-side-list {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      font-size: 0.87rem;
-      color: var(--text-main);
-    }
-
-    .hero-side-list li + li {
-      margin-top: 4px;
-    }
+    .hero-side-title { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--text-muted); margin-bottom: 4px; }
+    .hero-side-list { list-style: none; margin: 0; padding: 0; font-size: 0.87rem; color: var(--text-main); }
+    .hero-side-list li + li { margin-top: 4px; }
 
     /* Tabs */
     .tabs {
@@ -209,7 +122,6 @@
       background: rgba(15, 23, 42, 0.9);
       border: 1px solid var(--border-soft);
     }
-
     .tab-btn {
       flex: 1;
       border: none;
@@ -222,30 +134,13 @@
       text-transform: uppercase;
       letter-spacing: 0.14em;
     }
+    .tab-btn.active { background: var(--accent-soft); color: #dbeafe; font-weight: 600; }
+    .tab-btn:focus { outline: none; }
+    .tab-panels { margin-top: 18px; }
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
 
-    .tab-btn.active {
-      background: var(--accent-soft);
-      color: #dbeafe;
-      font-weight: 600;
-    }
-
-    .tab-btn:focus {
-      outline: none;
-    }
-
-    .tab-panels {
-      margin-top: 18px;
-    }
-
-    .tab-panel {
-      display: none;
-    }
-
-    .tab-panel.active {
-      display: block;
-    }
-
-    /* Common card styles */
+    /* Cards / sections */
     section {
       background: rgba(15, 23, 42, 0.94);
       border-radius: var(--radius-xl);
@@ -261,21 +156,14 @@
     }
 
     @media (max-width: 900px) {
-      .hero {
-        grid-template-columns: minmax(0, 1fr);
-      }
-      .panel-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
+      .hero { grid-template-columns: minmax(0, 1fr); }
+      .panel-grid { grid-template-columns: minmax(0, 1fr); }
     }
-
     @media (max-width: 640px) {
-      .page {
-        padding: 18px 12px 40px;
-      }
-      .hero {
-        padding: 18px 16px 16px;
-      }
+      .page { padding: 18px 12px 40px; }
+      .hero { padding: 18px 16px 16px; }
+      .tabs { flex-wrap: wrap; border-radius: 1rem; }
+      .tab-btn { flex: 1 1 45%; }
     }
 
     .section-title {
@@ -290,12 +178,7 @@
       gap: 10px;
     }
 
-    .timeline {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      margin-top: 4px;
-    }
+    .timeline { display: flex; flex-direction: column; gap: 12px; margin-top: 4px; }
 
     .item {
       padding: 9px 10px;
@@ -303,31 +186,10 @@
       background: rgba(15, 23, 42, 0.95);
       border: 1px solid rgba(31, 41, 55, 0.9);
     }
-
-    .item-header {
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-      align-items: baseline;
-    }
-
-    .item-title {
-      font-size: 0.95rem;
-      font-weight: 600;
-    }
-
-    .item-meta {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      text-align: right;
-      white-space: nowrap;
-    }
-
-    .item-sub {
-      font-size: 0.86rem;
-      color: var(--text-muted);
-      margin-top: 2px;
-    }
+    .item-header { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; }
+    .item-title { font-size: 0.95rem; font-weight: 600; }
+    .item-meta { font-size: 0.8rem; color: var(--text-muted); text-align: right; white-space: nowrap; }
+    .item-sub { font-size: 0.86rem; color: var(--text-muted); margin-top: 2px; }
 
     .item-bullets {
       margin: 6px 0 0;
@@ -336,18 +198,9 @@
       font-size: 0.86rem;
       line-height: 1.55;
     }
+    .item-bullets li + li { margin-top: 3px; }
 
-    .item-bullets li + li {
-      margin-top: 3px;
-    }
-
-    .chip-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-top: 6px;
-    }
-
+    .chip-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
     .chip {
       font-size: 0.78rem;
       padding: 3px 8px;
@@ -359,13 +212,7 @@
     }
 
     /* Skills */
-    .skills-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      margin-top: 4px;
-    }
-
+    .skills-grid { display: flex; flex-direction: column; gap: 8px; margin-top: 4px; }
     .skills-group-title {
       font-size: 0.85rem;
       text-transform: uppercase;
@@ -373,43 +220,16 @@
       color: var(--text-muted);
       margin-bottom: 4px;
     }
-
-    .skills-chips {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-    }
+    .skills-chips { display: flex; flex-wrap: wrap; gap: 6px; }
 
     /* Publications */
-    .pub-list {
-      list-style: none;
-      margin: 4px 0 0;
-      padding: 0;
-      font-size: 0.86rem;
-      color: var(--text-muted);
-    }
-
-    .pub-list li + li {
-      margin-top: 6px;
-    }
-
-    .pub-title {
-      color: var(--text-main);
-    }
+    .pub-list { list-style: none; margin: 4px 0 0; padding: 0; font-size: 0.86rem; color: var(--text-muted); }
+    .pub-list li + li { margin-top: 6px; }
+    .pub-title { color: var(--text-main); }
 
     /* Contact */
-    .contact-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.5fr) minmax(0, 1.5fr);
-      gap: 20px;
-    }
-
-    @media (max-width: 700px) {
-      .contact-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
-    }
-
+    .contact-grid { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1.5fr); gap: 20px; }
+    @media (max-width: 700px) { .contact-grid { grid-template-columns: minmax(0, 1fr); } }
     .contact-card {
       border-radius: var(--radius-lg);
       background: rgba(15, 23, 42, 0.95);
@@ -418,26 +238,10 @@
       font-size: 0.9rem;
       color: var(--text-muted);
     }
+    .contact-label { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.16em; color: var(--text-muted); margin-bottom: 4px; }
+    .contact-main { font-size: 0.93rem; color: var(--text-main); }
 
-    .contact-label {
-      font-size: 0.78rem;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: var(--text-muted);
-      margin-bottom: 4px;
-    }
-
-    .contact-main {
-      font-size: 0.93rem;
-      color: var(--text-main);
-    }
-
-    footer {
-      margin-top: 18px;
-      font-size: 0.78rem;
-      color: var(--text-muted);
-      text-align: center;
-    }
+    footer { margin-top: 18px; font-size: 0.78rem; color: var(--text-muted); text-align: center; }
   </style>
 </head>
 <body>
@@ -446,33 +250,21 @@
       <!-- Hero -->
       <header class="hero">
         <div class="hero-main">
-          <p class="hero-subtitle">FPGA · RTL · HLS · ML Accelerators</p>
+          <p class="hero-subtitle">FPGA · RTL · HLS · GPU Acceleration</p>
           <h1 class="hero-title">Sreehari Krishnakumar</h1>
 
           <p class="hero-summary">
-            FPGA and RTL design engineer with hands-on experience in RADAR and
-            RF SoC FPGA systems, NetFPGA-based packet processing, and ML
-            accelerators. Comfortable across Verilog/VHDL, HLS, and Python,
-            with a strong background in computer architecture, DFT, and
-            high-performance digital design.
+            FPGA / RTL / HLS engineer with experience in RADAR + RF SoC FPGA systems, NetFPGA packet processing,
+            GPU acceleration (CUDA), and ML accelerator design. Comfortable across Verilog/VHDL/HLS, C/C++,
+            and Python with strong computer architecture + performance focus.
           </p>
 
           <div class="hero-contact">
             <span>📍 Los Angeles, United States</span>
             <span>📞 <a href="tel:+12138124400">(213) 812-4400</a></span>
             <span>✉️ <a href="mailto:sreehari.pvt@gmail.com">sreehari.pvt@gmail.com</a></span>
-            <span>
-              💼
-              <a href="https://www.linkedin.com/in/sreehari-krishnakumar/" target="_blank" rel="noopener">
-                LinkedIn
-              </a>
-            </span>
-            <span>
-              🐙
-              <a href="https://github.com/sreeharikk25" target="_blank" rel="noopener">
-                GitHub
-              </a>
-            </span>
+            <span>💼 <a href="https://www.linkedin.com/in/sreehari-krishnakumar/" target="_blank" rel="noopener">LinkedIn</a></span>
+            <span>🐙 <a href="https://github.com/sreeharikk25" target="_blank" rel="noopener">GitHub</a></span>
           </div>
 
           <div class="hero-badge-row">
@@ -483,7 +275,7 @@
 
         <aside class="hero-side">
           <div class="hero-side-card">
-            <div class="hero-side-title">Currently at</div>
+            <div class="hero-side-title">Currently</div>
             <ul class="hero-side-list">
               <li><strong>University of Southern California</strong></li>
               <li>MS in Computer Engineering</li>
@@ -506,182 +298,90 @@
         <div class="tab-panel active" id="tab-overview">
           <section>
             <div class="panel-grid">
-              <!-- Left: Experience -->
               <div>
                 <h2 class="section-title">Experience</h2>
                 <div class="timeline">
-                  <!-- Data Patterns -->
                   <article class="item">
                     <div class="item-header">
                       <div class="item-title">FPGA Design Engineer · Data Patterns</div>
                       <div class="item-meta">Chennai, India · Sept 2023 – Mar 2024</div>
                     </div>
-                    <p class="item-sub">
-                      Defence electronics firm building RADAR and jammer systems.
-                    </p>
+                    <p class="item-sub">RADAR, DF, jammer pod algorithms on FPGA / RF SoC; MATLAB validation and lab bring-up.</p>
                     <ul class="item-bullets">
-                      <li>
-                        Implemented RADAR and Direction Finding (DF) algorithms on FPGA using
-                        VHDL and validated system behaviour via simulation and lab measurements.
-                      </li>
-                      <li>
-                        Developed jammer pod algorithms on RF SoC FPGA, applying beamforming
-                        techniques for a uniform circular array antenna in MATLAB.
-                      </li>
-                      <li>
-                        Performed system bring-up and debugging using ChipScope and JTAG,
-                        validating results with oscilloscopes and spectrum analyzers.
-                      </li>
+                      <li>Implemented RADAR + DF algorithms on FPGA; simulated PSK comms in MATLAB.</li>
+                      <li>Developed jammer pod algorithms on RF SoC FPGA; applied beamforming for a uniform circular array antenna.</li>
+                      <li>Debugged with ChipScope + JTAG; validated on oscilloscope + spectrum analyzer.</li>
                     </ul>
                     <div class="chip-row">
-                      <span class="chip">VHDL</span>
-                      <span class="chip">RF SoC FPGA</span>
-                      <span class="chip">MATLAB</span>
-                      <span class="chip">Beamforming</span>
-                      <span class="chip">ChipScope</span>
+                      <span class="chip">VHDL</span><span class="chip">RF SoC FPGA</span><span class="chip">MATLAB</span>
+                      <span class="chip">Beamforming</span><span class="chip">ChipScope</span>
                     </div>
                   </article>
 
-                  <!-- DRDO LRDE -->
                   <article class="item">
                     <div class="item-header">
-                      <div class="item-title">
-                        Intern · Electronics &amp; Radar Development Establishment (LRDE)
-                      </div>
-                      <div class="item-meta">
-                        DRDO · Coimbatore, India · Dec 2021 – May 2022
-                      </div>
+                      <div class="item-title">Intern · DRDO LRDE</div>
+                      <div class="item-meta">Coimbatore, India · Dec 2021 – May 2022</div>
                     </div>
-                    <p class="item-sub">
-                      Defence Research &amp; Development Organisation – radar data processing.
-                    </p>
+                    <p class="item-sub">Radar data processing using TLE + ADS-B integration.</p>
                     <ul class="item-bullets">
-                      <li>
-                        Processed and analysed radar data using Python with Two-Line Element
-                        (TLE) data for satellite tracking.
-                      </li>
-                      <li>
-                        Integrated ADS-B flight data for real-time aircraft monitoring.
-                      </li>
-                      <li>
-                        Improved accuracy and reliability of radar measurements by combining
-                        orbital parameters with real-time positioning data.
-                      </li>
+                      <li>Processed and analyzed radar data using Python with TLE data for satellite tracking.</li>
+                      <li>Integrated ADS-B data for flight monitoring; improved reliability via orbital + real-time fusion.</li>
                     </ul>
                     <div class="chip-row">
-                      <span class="chip">Python</span>
-                      <span class="chip">Radar Processing</span>
-                      <span class="chip">TLE</span>
-                      <span class="chip">ADS-B</span>
+                      <span class="chip">Python</span><span class="chip">Radar</span><span class="chip">TLE</span><span class="chip">ADS-B</span>
                     </div>
                   </article>
                 </div>
               </div>
 
-              <!-- Right: Education + Skills -->
               <div>
-                <!-- Education -->
                 <h2 class="section-title">Education</h2>
                 <div class="timeline">
                   <article class="item">
                     <div class="item-header">
-                      <div class="item-title">
-                        University of Southern California (USC)
-                      </div>
+                      <div class="item-title">University of Southern California (USC)</div>
                       <div class="item-meta">Los Angeles, CA</div>
                     </div>
-                    <p class="item-sub">
-                      Master of Science in Computer Engineering · Aug 2024 – May 2026
-                    </p>
+                    <p class="item-sub">MS Computer Engineering · Aug 2024 – May 2026</p>
                     <ul class="item-bullets">
-                      <li>
-                        Coursework: EE457, EE557, EE533, EE451, EE511, EE658.
-                      </li>
+                      <li>Coursework: Computer Organization/Architecture, Network Processor Design, Parallel & Distributed, ML HW Accel, Reliable Digital Systems.</li>
                     </ul>
                   </article>
 
                   <article class="item">
                     <div class="item-header">
-                      <div class="item-title">
-                        PSG College of Technology
-                      </div>
+                      <div class="item-title">PSG College of Technology</div>
                       <div class="item-meta">Coimbatore, India</div>
                     </div>
-                    <p class="item-sub">
-                      B.E. in Electronics and Communication Engineering ·
-                      Jul 2019 – Aug 2023
-                    </p>
+                    <p class="item-sub">B.E. ECE · Jul 2019 – Aug 2023</p>
                   </article>
                 </div>
 
-                <!-- Skills -->
                 <h2 class="section-title" style="margin-top: 14px;">Skills</h2>
                 <div class="skills-grid">
                   <div>
-                    <div class="skills-group-title">HDL &amp; Programming</div>
+                    <div class="skills-group-title">HDL & Programming</div>
                     <div class="skills-chips">
-                      <span class="chip">Verilog</span>
-                      <span class="chip">VHDL (Basics)</span>
-                      <span class="chip">HLS</span>
-                      <span class="chip">MATLAB</span>
-                      <span class="chip">Python</span>
-                      <span class="chip">TCL</span>
-                      <span class="chip">C/C++</span>
-                      <span class="chip">CUDA</span>
-                      <span class="chip">Linux</span>
-                      <span class="chip">Bash</span>
-                      <span class="chip">OOP</span>
-                      <span class="chip">OpenMP</span>
+                      <span class="chip">Verilog</span><span class="chip">SystemVerilog</span><span class="chip">VHDL</span>
+                      <span class="chip">HLS</span><span class="chip">C/C++</span><span class="chip">CUDA</span>
+                      <span class="chip">Python</span><span class="chip">MATLAB</span><span class="chip">Linux</span><span class="chip">TCL</span>
                     </div>
                   </div>
 
                   <div>
-                    <div class="skills-group-title">EDA Tools</div>
+                    <div class="skills-group-title">EDA & Platforms</div>
                     <div class="skills-chips">
-                      <span class="chip">QuestaSim</span>
-                      <span class="chip">Synopsys Design Compiler</span>
-                      <span class="chip">PrimeTime</span>
-                      <span class="chip">Cadence Innovus</span>
-                      <span class="chip">Xilinx Vivado</span>
-                      <span class="chip">Xilinx ISE</span>
+                      <span class="chip">QuestaSim</span><span class="chip">Vivado</span><span class="chip">Xilinx ISE</span>
+                      <span class="chip">Synopsys DC</span><span class="chip">PrimeTime</span><span class="chip">Innovus</span>
+                      <span class="chip">NetFPGA</span><span class="chip">Zynq</span><span class="chip">Kria</span>
                     </div>
                   </div>
 
                   <div>
                     <div class="skills-group-title">Protocols</div>
                     <div class="skills-chips">
-                      <span class="chip">AXI</span>
-                      <span class="chip">GPIO</span>
-                      <span class="chip">APB</span>
-                      <span class="chip">AHB Lite</span>
-                      <span class="chip">Cache Coherency</span>
-                    </div>
-                  </div>
-
-                  <div>
-                    <div class="skills-group-title">Concepts &amp; Methodologies</div>
-                    <div class="skills-chips">
-                      <span class="chip">RTL Design</span>
-                      <span class="chip">Computer Architecture</span>
-                      <span class="chip">DFT</span>
-                      <span class="chip">Emulation</span>
-                      <span class="chip">OoO Processors</span>
-                      <span class="chip">Superscalar CPU</span>
-                      <span class="chip">Tomasulo Algorithm</span>
-                      <span class="chip">CPU Microarchitecture</span>
-                      <span class="chip">GPU Architecture</span>
-                      <span class="chip">Caches</span>
-                      <span class="chip">Virtual Memory</span>
-                      <span class="chip">Low Power Optimization</span>
-                      <span class="chip">Static Timing Analysis</span>
-                      <span class="chip">Git</span>
-                      <span class="chip">CAM</span>
-                      <span class="chip">GPGPU</span>
-                      <span class="chip">ASIC Verification</span>
-                      <span class="chip">Image Processing</span>
-                      <span class="chip">Signal Processing</span>
-                      <span class="chip">Spectrum Analyzer</span>
-                      <span class="chip">Signal Generator</span>
+                      <span class="chip">AXI</span><span class="chip">APB</span><span class="chip">AHB-Lite</span><span class="chip">GPIO</span>
                     </div>
                   </div>
                 </div>
@@ -694,35 +394,16 @@
         <div class="tab-panel" id="tab-research">
           <section>
             <h2 class="section-title">Research & Publications</h2>
-            <p class="item-sub">
-              Selected publications and research work focused on networking security
-              and digital signal processing.
-            </p>
             <ul class="pub-list">
               <li>
-                <span class="pub-title">
-                  Detection of ARP Spoofing Attacks in Software Defined Networks
-                </span>
-                <br />
-                Saritakumar N, Anusuya K V, <strong>Sreehari Krishnakumar</strong>.
-                2023 International Conference on Intelligent Systems for Communication,
-                IoT and Security (ICISCoIS), Coimbatore, India, 2023.
+                <span class="pub-title">Detection of ARP Spoofing Attacks in Software Defined Networks</span><br />
+                Saritakumar N, Anusuya K V, <strong>Sreehari Krishnakumar</strong>. ICISCoIS 2023.
               </li>
               <li>
-                <span class="pub-title">
-                  Digital Signal Processing on 3-Axis Accelerometer
-                </span>
-                <br />
-                <strong>Sreehari Krishnakumar</strong>, Vignesh Karthikeyan R,
-                Manoharan V K, Saritakumar N. 2023 International Conference on
-                Intelligent Systems for Communication, IoT and Security (ICISCoIS),
-                Coimbatore, India, 2023.
+                <span class="pub-title">Digital Signal Processing on 3-Axis Accelerometer</span><br />
+                <strong>Sreehari Krishnakumar</strong>, Vignesh Karthikeyan R, Manoharan V K, Saritakumar N. ICISCoIS 2023.
               </li>
             </ul>
-            <p class="item-sub" style="margin-top: 12px;">
-              You can add more items here later (e.g., course projects that feel like
-              research, open-source contributions, or under-review work).
-            </p>
           </section>
         </div>
 
@@ -731,168 +412,207 @@
           <section>
             <h2 class="section-title">Projects</h2>
             <div class="timeline">
-              <!-- 3D Convolution Accelerator -->
+
+              <!-- NEW: SOGRAND -->
               <article class="item">
                 <div class="item-header">
-                  <div class="item-title">3D Convolution Accelerator on FPGA</div>
-                  <div class="item-meta">Nov 2025</div>
+                  <div class="item-title">SOGRAND Implementation on CUDA</div>
+                  <div class="item-meta">Jun 2025 – Aug 2025</div>
                 </div>
-                <p class="item-sub">
-                  Vitis HLS implementation of 3D convolution with WS and OS dataflows on Kria KV260.
-                </p>
+                <p class="item-sub">GPU-accelerated soft-output error-correcting decoder with stream-based execution.</p>
                 <ul class="item-bullets">
-                  <li>
-                    Implemented 3D convolution kernels using Weight-Stationary (WS) and
-                    Output-Stationary (OS) dataflows to maximise on-chip data reuse.
-                  </li>
-                  <li>
-                    Used HLS pragmas (pipelining, loop unrolling, array partitioning, buffering)
-                    to balance DSP, BRAM and LUT usage under KV260 constraints.
-                  </li>
-                  <li>
-                    Built a PYNQ-based host validation framework to compare WS vs OS architectures
-                    in terms of throughput and latency.
-                  </li>
+                  <li>Optimized the SOGRAND decoder using CUDA acceleration + stream-based processing to reduce execution time while maintaining zero-error accuracy.</li>
+                  <li>Implemented vectorized operations, thread-level parallelism, and stream batching for high-throughput decoding.</li>
+                  <li>Targeted high-performance error correction in communication systems.</li>
                 </ul>
                 <div class="chip-row">
-                  <span class="chip">Vitis HLS</span>
-                  <span class="chip">3D Convolution</span>
-                  <span class="chip">Kria KV260</span>
-                  <span class="chip">PYNQ</span>
+                  <span class="chip">CUDA</span><span class="chip">C</span><span class="chip">Error Correcting Codes</span>
+                  <span class="chip">Streams</span><span class="chip">Parallelism</span>
                 </div>
               </article>
 
-              <!-- Network Packet Classifier -->
+              <!-- DFT -->
               <article class="item">
                 <div class="item-header">
-                  <div class="item-title">
-                    Network Packet Classifier with 32-Neuron NPU
-                  </div>
+                  <div class="item-title">DFT: Levelization, Logic/Fault Simulation & ATPG</div>
+                  <div class="item-meta">Jun 2025 (resume) / Nov 2025 (resume)</div>
+                </div>
+                <p class="item-sub">C++ tooling for circuit parsing/levelization and ATPG + fault simulation.</p>
+                <ul class="item-bullets">
+                  <li>Built a C++ parser + levelizer for circuit analysis and ATPG workflows.</li>
+                  <li>Implemented Deductive/Parallel Fault Simulation, D-Algorithm, and PODEM; added optimizations for faster analysis.</li>
+                </ul>
+                <div class="chip-row">
+                  <span class="chip">DFT</span><span class="chip">ATPG</span><span class="chip">PODEM</span><span class="chip">C++</span>
+                </div>
+              </article>
+
+              <!-- NetFPGA NPU packet classifier -->
+              <article class="item">
+                <div class="item-header">
+                  <div class="item-title">Network Packet Classifier with 32-Neuron NPU (NetFPGA)</div>
                   <div class="item-meta">May 2025</div>
                 </div>
-                <p class="item-sub">
-                  Verilog NPU integrated into NetFPGA IDS pipeline for malicious traffic detection.
-                </p>
+                <p class="item-sub">Real-time malicious traffic flagging using a pipelined MAC + NetFPGA IDS integration.</p>
                 <ul class="item-bullets">
-                  <li>
-                    Architected a 32-neuron ReLU NPU to inspect 528-byte Ethernet frames
-                    and output logits for real-time classification.
-                  </li>
-                  <li>
-                    Built a two-stage pipelined MAC using 32 DSP48s, meeting a 250&nbsp;MHz
-                    timing target on Virtex-II Pro.
-                  </li>
-                  <li>
-                    Integrated the NPU into a verdict-aware drop FIFO, maintaining wire-speed
-                    throughput with &lt;600-cycle end-to-end latency.
-                  </li>
+                  <li>Architected a 32-neuron ReLU NPU inspecting the first 528 bytes of Ethernet frames and producing a logit verdict.</li>
+                  <li>Built a two-stage pipelined MAC reusing 32 DSP48s; met 250 MHz timing target on Virtex-II Pro.</li>
+                  <li>Integrated verdict-aware drop FIFO to discard malicious packets while maintaining wire-speed throughput.</li>
                 </ul>
                 <div class="chip-row">
-                  <span class="chip">Verilog</span>
-                  <span class="chip">NetFPGA</span>
-                  <span class="chip">DSP48</span>
-                  <span class="chip">Pipelining</span>
+                  <span class="chip">Verilog</span><span class="chip">NetFPGA</span><span class="chip">DSP48</span><span class="chip">Pipelining</span>
                 </div>
               </article>
 
-              <!-- Real-time Digit Classification NPU -->
+              <!-- NPU digit classification -->
               <article class="item">
                 <div class="item-header">
-                  <div class="item-title">
-                    Neural Processing Unit for Real-Time Digit Classification
-                  </div>
+                  <div class="item-title">FPGA-Based Neural Processing Unit for Real-Time Digit Classification</div>
                   <div class="item-meta">Mar 2025</div>
                 </div>
-                <p class="item-sub">
-                  Simple ANN accelerator for 8×8 binary MNIST images.
-                </p>
+                <p class="item-sub">ANN inference accelerator for 8×8 binary MNIST with hardware multithreading.</p>
                 <ul class="item-bullets">
-                  <li>
-                    Designed a MAC module in Verilog using four fp16 multipliers and an adder
-                    for digit classification.
-                  </li>
-                  <li>
-                    Implemented a 1-layer ANN with 3 hidden neurons and 10 output classes
-                    using MUX-based fp16 multipliers.
-                  </li>
-                  <li>
-                    Parallelised neuron computations across four hardware threads for
-                    efficient real-time performance.
-                  </li>
+                  <li>Designed MAC hardware using fp16 multipliers + adder.</li>
+                  <li>Implemented 1-layer ANN (3 hidden neurons, 10 outputs) using MUX-based fp16 multipliers.</li>
+                  <li>Parallelized neuron computations across four hardware threads for real-time classification.</li>
                 </ul>
                 <div class="chip-row">
-                  <span class="chip">Verilog</span>
-                  <span class="chip">fp16</span>
-                  <span class="chip">MNIST</span>
+                  <span class="chip">FPGA</span><span class="chip">Verilog</span><span class="chip">fp16</span><span class="chip">Multithreading</span>
                 </div>
               </article>
 
-              <!-- Pipelined Processor -->
+              <!-- NetFPGA processor -->
               <article class="item">
                 <div class="item-header">
-                  <div class="item-title">
-                    Pipelined Processor with Multithreading &amp; ARM ISA Support
-                  </div>
+                  <div class="item-title">NetFPGA Pipelined Processor with Multithreading & ARM ISA Subset</div>
                   <div class="item-meta">Feb 2025</div>
                 </div>
-                <p class="item-sub">
-                  Custom RISC-like processor on NetFPGA with multithreading.
-                </p>
+                <p class="item-sub">Custom pipelined processor + context switching with ARM ISA subset support.</p>
                 <ul class="item-bullets">
-                  <li>
-                    Implemented a pipelined processor in Verilog with 64-bit ALU, register file
-                    and synchronous memory.
-                  </li>
-                  <li>
-                    Added hardware-accelerated context switching for multithreaded execution.
-                  </li>
-                  <li>
-                    Extended support for a subset of ARM ISA and validated with assembly
-                    programs (e.g., bubble sort).
-                  </li>
-                  <li>
-                    Authored a self-checking testbench that inspects hazards and final
-                    architectural state.
-                  </li>
+                  <li>Implemented pipelined processor with 64-bit ALU, register file, and synchronous memory.</li>
+                  <li>Added hardware-accelerated context switching for multi-thread execution.</li>
+                  <li>Validated ARM ISA subset with assembly programs (e.g., bubble sort) and testbenches.</li>
                 </ul>
                 <div class="chip-row">
-                  <span class="chip">Verilog</span>
-                  <span class="chip">NetFPGA</span>
-                  <span class="chip">ARM ISA (subset)</span>
-                  <span class="chip">Multithreading</span>
+                  <span class="chip">Verilog</span><span class="chip">NetFPGA</span><span class="chip">CPU</span><span class="chip">ARM ISA (subset)</span>
                 </div>
               </article>
 
-              <!-- FPGA-based IDS -->
+              <!-- NetFPGA IDS -->
               <article class="item">
                 <div class="item-header">
-                  <div class="item-title">
-                    FPGA-Based Intrusion Detection System (IDS)
-                  </div>
+                  <div class="item-title">NetFPGA-Based Intrusion Detection System (IDS)</div>
                   <div class="item-meta">Jan 2025</div>
                 </div>
-                <p class="item-sub">
-                  Mini-IDS for packet inspection and malicious payload filtering.
-                </p>
+                <p class="item-sub">Pattern-matching pipeline with dual-port memory for packet inspection.</p>
                 <ul class="item-bullets">
-                  <li>
-                    Designed a Mini-IDS on NetFPGA with pattern-matching logic and dual-port
-                    memory for packet analysis.
-                  </li>
-                  <li>
-                    Implemented a custom detection pipeline that filters malicious packets
-                    by payload content.
-                  </li>
-                  <li>
-                    Validated detection accuracy and throughput using TCP/UDP traffic tests.
-                  </li>
+                  <li>Designed Mini-IDS integrating pattern matching hardware and register-based detection logic.</li>
+                  <li>Implemented and synthesized custom pipeline to filter malicious packets via payload analysis.</li>
+                  <li>Validated using TCP/UDP traffic tests (accuracy + throughput).</li>
                 </ul>
                 <div class="chip-row">
-                  <span class="chip">NetFPGA</span>
-                  <span class="chip">Packet Processing</span>
-                  <span class="chip">Intrusion Detection</span>
+                  <span class="chip">NetFPGA</span><span class="chip">Packet Processing</span><span class="chip">Security</span>
                 </div>
               </article>
+
+              <!-- Branch predictor -->
+              <article class="item">
+                <div class="item-header">
+                  <div class="item-title">Branch Predictor Implementation (Intel Pin Tool)</div>
+                  <div class="item-meta">Jan 2025</div>
+                </div>
+                <p class="item-sub">Implemented and benchmarked multiple branch predictors using dynamic instrumentation.</p>
+                <ul class="item-bullets">
+                  <li>Built Always Taken, 2-bit Global, 2-bit Bimodal, and 2-bit Correlated predictors.</li>
+                  <li>Implemented 2-bit saturating predictor with history tracking and prediction buffer indexing.</li>
+                  <li>Benchmarked prediction rates to compare improvements over static strategies.</li>
+                </ul>
+                <div class="chip-row">
+                  <span class="chip">C/C++</span><span class="chip">Intel Pin</span><span class="chip">Computer Architecture</span>
+                </div>
+              </article>
+
+              <!-- CUTLASS / GPGPU -->
+              <article class="item">
+                <div class="item-header">
+                  <div class="item-title">GPU Performance Analysis for NVIDIA CUTLASS (GPGPU-Sim)</div>
+                  <div class="item-meta">Jan 2025</div>
+                </div>
+                <p class="item-sub">GEMM microbenchmarking + simulation across architectures and tiling strategies.</p>
+                <ul class="item-bullets">
+                  <li>Evaluated DWMMA/SGEMM/DGEMM across tile sizes and memory layouts to improve locality.</li>
+                  <li>Used GPGPU-Sim to study warp scheduling, memory coalescing, and resource allocation impacts.</li>
+                </ul>
+                <div class="chip-row">
+                  <span class="chip">CUDA</span><span class="chip">CUTLASS</span><span class="chip">GPGPU-Sim</span><span class="chip">Performance</span>
+                </div>
+              </article>
+
+              <!-- K-SVD -->
+              <article class="item">
+                <div class="item-header">
+                  <div class="item-title">K-SVD Image Denoising using CUDA</div>
+                  <div class="item-meta">Dec 2024</div>
+                </div>
+                <p class="item-sub">GPU acceleration for sparse coding + dictionary update steps.</p>
+                <ul class="item-bullets">
+                  <li>Implemented CUDA-accelerated K-SVD for faster denoising vs CPU version.</li>
+                  <li>Also developed OpenMP + CUDA parallel versions for performance scaling.</li>
+                </ul>
+                <div class="chip-row">
+                  <span class="chip">CUDA</span><span class="chip">OpenMP</span><span class="chip">Image Processing</span>
+                </div>
+              </article>
+
+              <!-- MIPS CPU -->
+              <article class="item">
+                <div class="item-header">
+                  <div class="item-title">MIPS 5-Stage Pipelined CPU (RTL)</div>
+                  <div class="item-meta">Nov 2024</div>
+                </div>
+                <p class="item-sub">5-stage in-order CPU with hazard handling + branch optimizations.</p>
+                <ul class="item-bullets">
+                  <li>Designed IF/ID/EX1/EX2/WB pipeline with datapath + control and hazards.</li>
+                  <li>Implemented early/late branch resolution with forwarding and hazard detection to minimize stalls.</li>
+                </ul>
+                <div class="chip-row">
+                  <span class="chip">Verilog</span><span class="chip">RTL</span><span class="chip">QuestaSim</span><span class="chip">Pipelining</span>
+                </div>
+              </article>
+
+              <!-- ARP SDN -->
+              <article class="item">
+                <div class="item-header">
+                  <div class="item-title">ARP Attack Detection System using RISC-V (SDN)</div>
+                  <div class="item-meta">Mar 2023</div>
+                </div>
+                <p class="item-sub">Secure ARP verification using SDN + custom instructions (and blockchain component in one resume).</p>
+                <ul class="item-bullets">
+                  <li>Designed SDN-based detection/mitigation for ARP spoofing using a RISC-V processor-based system.</li>
+                  <li>Optimized ARP monitoring and packet inspection using custom RISC-V instructions for real-time detection.</li>
+                  <li>Validated using simulated ARP spoofing scenarios; improved detection accuracy and mitigation effectiveness.</li>
+                </ul>
+                <div class="chip-row">
+                  <span class="chip">RISC-V</span><span class="chip">Networking</span><span class="chip">Security</span>
+                </div>
+              </article>
+
+              <!-- Sobel FPGA -->
+              <article class="item">
+                <div class="item-header">
+                  <div class="item-title">Sobel Edge Detection on FPGA</div>
+                  <div class="item-meta">Feb 2023</div>
+                </div>
+                <p class="item-sub">Real-time edge detection with DMA-assisted memory transfers.</p>
+                <ul class="item-bullets">
+                  <li>Implemented Sobel accelerator and deployed on a Xilinx Zynq development board.</li>
+                  <li>Integrated DMA for image/kernel access; accelerated convolution via FPGA matrix multiplication.</li>
+                </ul>
+                <div class="chip-row">
+                  <span class="chip">FPGA</span><span class="chip">Vivado</span><span class="chip">DMA</span><span class="chip">Image Processing</span>
+                </div>
+              </article>
+
             </div>
           </section>
         </div>
@@ -904,42 +624,25 @@
             <div class="contact-grid">
               <div class="contact-card">
                 <div class="contact-label">Email</div>
-                <div class="contact-main">
-                  <a href="mailto:sreehari.pvt@gmail.com">sreehari.pvt@gmail.com</a>
-                </div>
+                <div class="contact-main"><a href="mailto:sreehari.pvt@gmail.com">sreehari.pvt@gmail.com</a></div>
 
                 <div class="contact-label" style="margin-top: 10px;">Phone</div>
-                <div class="contact-main">
-                  <a href="tel:+12138124400">(213) 812-4400</a>
-                </div>
+                <div class="contact-main"><a href="tel:+12138124400">(213) 812-4400</a></div>
 
                 <div class="contact-label" style="margin-top: 10px;">Location</div>
-                <div class="contact-main">
-                  Los Angeles, United States
-                </div>
+                <div class="contact-main">Los Angeles, United States</div>
               </div>
 
               <div class="contact-card">
                 <div class="contact-label">Links</div>
                 <div class="contact-main">
-                  <p>
-                    💼
-                    <a href="https://www.linkedin.com/in/sreehari-krishnakumar/" target="_blank" rel="noopener">
-                      LinkedIn – Sreehari Krishnakumar
-                    </a>
-                  </p>
-                  <p>
-                    🐙
-                    <a href="https://github.com/sreeharikk25" target="_blank" rel="noopener">
-                      GitHub – @sreeharikk25
-                    </a>
-                  </p>
+                  <p>💼 <a href="https://www.linkedin.com/in/sreehari-krishnakumar/" target="_blank" rel="noopener">LinkedIn</a></p>
+                  <p>🐙 <a href="https://github.com/sreeharikk25" target="_blank" rel="noopener">GitHub</a></p>
                 </div>
 
-                <div class="contact-label" style="margin-top: 10px;">Availability</div>
+                <div class="contact-label" style="margin-top: 10px;">Focus</div>
                 <div class="contact-main">
-                  Open to internships and new grad roles in
-                  <strong>RTL, FPGA, HLS, and ML accelerators</strong>.
+                  RTL/FPGA/HLS, computer architecture, GPU acceleration, networking/security hardware.
                 </div>
               </div>
             </div>
@@ -954,27 +657,18 @@
   </div>
 
   <script>
-    // Year in footer
-    document.getElementById("year").textContent =
-      new Date().getFullYear().toString();
+    document.getElementById("year").textContent = new Date().getFullYear().toString();
 
-    // Simple tab logic
     const tabButtons = document.querySelectorAll(".tab-btn");
     const panels = document.querySelectorAll(".tab-panel");
 
     tabButtons.forEach((btn) => {
       btn.addEventListener("click", () => {
         const target = btn.getAttribute("data-tab");
-        // activate button
         tabButtons.forEach((b) => b.classList.remove("active"));
         btn.classList.add("active");
-        // activate panel
         panels.forEach((p) => {
-          if (p.id === "tab-" + target) {
-            p.classList.add("active");
-          } else {
-            p.classList.remove("active");
-          }
+          p.classList.toggle("active", p.id === "tab-" + target);
         });
       });
     });
