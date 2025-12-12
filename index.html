@@ -199,19 +199,72 @@
       margin-top: 4px;
     }
 
-    /* Sections */
-    .sections {
-      margin-top: 28px;
+    /* Tabs */
+    .tabs {
+      margin-top: 24px;
+      display: flex;
+      gap: 6px;
+      padding: 4px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid var(--border-soft);
+    }
+
+    .tab-btn {
+      flex: 1;
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      padding: 8px 12px;
+      border-radius: 999px;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+    }
+
+    .tab-btn.active {
+      background: var(--accent-soft);
+      color: #dbeafe;
+      font-weight: 600;
+    }
+
+    .tab-btn:focus {
+      outline: none;
+    }
+
+    .tab-panels {
+      margin-top: 18px;
+    }
+
+    .tab-panel {
+      display: none;
+    }
+
+    .tab-panel.active {
+      display: block;
+    }
+
+    /* Common card styles */
+    section {
+      background: rgba(15, 23, 42, 0.94);
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border-soft);
+      padding: 16px 16px 12px;
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.85);
+    }
+
+    .panel-grid {
       display: grid;
-      grid-template-columns: minmax(0, 2.2fr) minmax(0, 1.6fr);
-      gap: 24px;
+      grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.7fr);
+      gap: 20px;
     }
 
     @media (max-width: 900px) {
       .hero {
         grid-template-columns: minmax(0, 1fr);
       }
-      .sections {
+      .panel-grid {
         grid-template-columns: minmax(0, 1fr);
       }
     }
@@ -223,14 +276,6 @@
       .hero {
         padding: 18px 16px 16px;
       }
-    }
-
-    section {
-      background: rgba(15, 23, 42, 0.94);
-      border-radius: var(--radius-xl);
-      border: 1px solid var(--border-soft);
-      padding: 16px 16px 12px;
-      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.85);
     }
 
     .section-title {
@@ -352,7 +397,41 @@
       color: var(--text-main);
     }
 
-    /* Footer */
+    /* Contact */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.5fr) minmax(0, 1.5fr);
+      gap: 20px;
+    }
+
+    @media (max-width: 700px) {
+      .contact-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .contact-card {
+      border-radius: var(--radius-lg);
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      padding: 12px 12px 10px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .contact-label {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .contact-main {
+      font-size: 0.93rem;
+      color: var(--text-main);
+    }
+
     footer {
       margin-top: 18px;
       font-size: 0.78rem;
@@ -414,91 +493,243 @@
         </aside>
       </header>
 
-      <!-- Main sections -->
-      <div class="sections">
-        <!-- Left column -->
-        <div>
-          <!-- Experience -->
-          <section id="experience">
-            <h2 class="section-title">
-              Experience
-            </h2>
-            <div class="timeline">
-              <!-- Data Patterns -->
-              <article class="item">
-                <div class="item-header">
-                  <div class="item-title">FPGA Design Engineer · Data Patterns</div>
-                  <div class="item-meta">Chennai, India · Sept 2023 – Mar 2024</div>
-                </div>
-                <p class="item-sub">
-                  Defence electronics firm building RADAR and jammer systems.
-                </p>
-                <ul class="item-bullets">
-                  <li>
-                    Implemented RADAR and Direction Finding (DF) algorithms on FPGA using
-                    VHDL and validated system behaviour via simulation and lab measurements.
-                  </li>
-                  <li>
-                    Developed jammer pod algorithms on RF SoC FPGA, applying beamforming
-                    techniques for a uniform circular array antenna in MATLAB.
-                  </li>
-                  <li>
-                    Performed system bring-up and debugging using ChipScope and JTAG,
-                    validating results with oscilloscopes and spectrum analyzers.
-                  </li>
-                </ul>
-                <div class="chip-row">
-                  <span class="chip">VHDL</span>
-                  <span class="chip">RF SoC FPGA</span>
-                  <span class="chip">MATLAB</span>
-                  <span class="chip">Beamforming</span>
-                  <span class="chip">ChipScope</span>
-                </div>
-              </article>
+      <!-- Tabs -->
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="overview">Overview</button>
+        <button class="tab-btn" data-tab="research">Research</button>
+        <button class="tab-btn" data-tab="projects">Projects</button>
+        <button class="tab-btn" data-tab="contact">Contact</button>
+      </div>
 
-              <!-- DRDO LRDE -->
-              <article class="item">
-                <div class="item-header">
-                  <div class="item-title">
-                    Intern · Electronics &amp; Radar Development Establishment (LRDE)
+      <div class="tab-panels">
+        <!-- ==================== OVERVIEW TAB ==================== -->
+        <div class="tab-panel active" id="tab-overview">
+          <section>
+            <div class="panel-grid">
+              <!-- Left: Experience -->
+              <div>
+                <h2 class="section-title">Experience</h2>
+                <div class="timeline">
+                  <!-- Data Patterns -->
+                  <article class="item">
+                    <div class="item-header">
+                      <div class="item-title">FPGA Design Engineer · Data Patterns</div>
+                      <div class="item-meta">Chennai, India · Sept 2023 – Mar 2024</div>
+                    </div>
+                    <p class="item-sub">
+                      Defence electronics firm building RADAR and jammer systems.
+                    </p>
+                    <ul class="item-bullets">
+                      <li>
+                        Implemented RADAR and Direction Finding (DF) algorithms on FPGA using
+                        VHDL and validated system behaviour via simulation and lab measurements.
+                      </li>
+                      <li>
+                        Developed jammer pod algorithms on RF SoC FPGA, applying beamforming
+                        techniques for a uniform circular array antenna in MATLAB.
+                      </li>
+                      <li>
+                        Performed system bring-up and debugging using ChipScope and JTAG,
+                        validating results with oscilloscopes and spectrum analyzers.
+                      </li>
+                    </ul>
+                    <div class="chip-row">
+                      <span class="chip">VHDL</span>
+                      <span class="chip">RF SoC FPGA</span>
+                      <span class="chip">MATLAB</span>
+                      <span class="chip">Beamforming</span>
+                      <span class="chip">ChipScope</span>
+                    </div>
+                  </article>
+
+                  <!-- DRDO LRDE -->
+                  <article class="item">
+                    <div class="item-header">
+                      <div class="item-title">
+                        Intern · Electronics &amp; Radar Development Establishment (LRDE)
+                      </div>
+                      <div class="item-meta">
+                        DRDO · Coimbatore, India · Dec 2021 – May 2022
+                      </div>
+                    </div>
+                    <p class="item-sub">
+                      Defence Research &amp; Development Organisation – radar data processing.
+                    </p>
+                    <ul class="item-bullets">
+                      <li>
+                        Processed and analysed radar data using Python with Two-Line Element
+                        (TLE) data for satellite tracking.
+                      </li>
+                      <li>
+                        Integrated ADS-B flight data for real-time aircraft monitoring.
+                      </li>
+                      <li>
+                        Improved accuracy and reliability of radar measurements by combining
+                        orbital parameters with real-time positioning data.
+                      </li>
+                    </ul>
+                    <div class="chip-row">
+                      <span class="chip">Python</span>
+                      <span class="chip">Radar Processing</span>
+                      <span class="chip">TLE</span>
+                      <span class="chip">ADS-B</span>
+                    </div>
+                  </article>
+                </div>
+              </div>
+
+              <!-- Right: Education + Skills -->
+              <div>
+                <!-- Education -->
+                <h2 class="section-title">Education</h2>
+                <div class="timeline">
+                  <article class="item">
+                    <div class="item-header">
+                      <div class="item-title">
+                        University of Southern California (USC)
+                      </div>
+                      <div class="item-meta">Los Angeles, CA</div>
+                    </div>
+                    <p class="item-sub">
+                      Master of Science in Computer Engineering · Aug 2024 – May 2026
+                    </p>
+                    <ul class="item-bullets">
+                      <li>
+                        Coursework: EE457, EE557, EE533, EE451, EE511, EE658.
+                      </li>
+                    </ul>
+                  </article>
+
+                  <article class="item">
+                    <div class="item-header">
+                      <div class="item-title">
+                        PSG College of Technology
+                      </div>
+                      <div class="item-meta">Coimbatore, India</div>
+                    </div>
+                    <p class="item-sub">
+                      B.E. in Electronics and Communication Engineering ·
+                      Jul 2019 – Aug 2023
+                    </p>
+                  </article>
+                </div>
+
+                <!-- Skills -->
+                <h2 class="section-title" style="margin-top: 14px;">Skills</h2>
+                <div class="skills-grid">
+                  <div>
+                    <div class="skills-group-title">HDL &amp; Programming</div>
+                    <div class="skills-chips">
+                      <span class="chip">Verilog</span>
+                      <span class="chip">VHDL (Basics)</span>
+                      <span class="chip">HLS</span>
+                      <span class="chip">MATLAB</span>
+                      <span class="chip">Python</span>
+                      <span class="chip">TCL</span>
+                      <span class="chip">C/C++</span>
+                      <span class="chip">CUDA</span>
+                      <span class="chip">Linux</span>
+                      <span class="chip">Bash</span>
+                      <span class="chip">OOP</span>
+                      <span class="chip">OpenMP</span>
+                    </div>
                   </div>
-                  <div class="item-meta">
-                    DRDO · Coimbatore, India · Dec 2021 – May 2022
+
+                  <div>
+                    <div class="skills-group-title">EDA Tools</div>
+                    <div class="skills-chips">
+                      <span class="chip">QuestaSim</span>
+                      <span class="chip">Synopsys Design Compiler</span>
+                      <span class="chip">PrimeTime</span>
+                      <span class="chip">Cadence Innovus</span>
+                      <span class="chip">Xilinx Vivado</span>
+                      <span class="chip">Xilinx ISE</span>
+                    </div>
+                  </div>
+
+                  <div>
+                    <div class="skills-group-title">Protocols</div>
+                    <div class="skills-chips">
+                      <span class="chip">AXI</span>
+                      <span class="chip">GPIO</span>
+                      <span class="chip">APB</span>
+                      <span class="chip">AHB Lite</span>
+                      <span class="chip">Cache Coherency</span>
+                    </div>
+                  </div>
+
+                  <div>
+                    <div class="skills-group-title">Concepts &amp; Methodologies</div>
+                    <div class="skills-chips">
+                      <span class="chip">RTL Design</span>
+                      <span class="chip">Computer Architecture</span>
+                      <span class="chip">DFT</span>
+                      <span class="chip">Emulation</span>
+                      <span class="chip">OoO Processors</span>
+                      <span class="chip">Superscalar CPU</span>
+                      <span class="chip">Tomasulo Algorithm</span>
+                      <span class="chip">CPU Microarchitecture</span>
+                      <span class="chip">GPU Architecture</span>
+                      <span class="chip">Caches</span>
+                      <span class="chip">Virtual Memory</span>
+                      <span class="chip">Low Power Optimization</span>
+                      <span class="chip">Static Timing Analysis</span>
+                      <span class="chip">Git</span>
+                      <span class="chip">CAM</span>
+                      <span class="chip">GPGPU</span>
+                      <span class="chip">ASIC Verification</span>
+                      <span class="chip">Image Processing</span>
+                      <span class="chip">Signal Processing</span>
+                      <span class="chip">Spectrum Analyzer</span>
+                      <span class="chip">Signal Generator</span>
+                    </div>
                   </div>
                 </div>
-                <p class="item-sub">
-                  Defence Research &amp; Development Organisation – radar data processing.
-                </p>
-                <ul class="item-bullets">
-                  <li>
-                    Processed and analysed radar data using Python with Two-Line Element
-                    (TLE) data for satellite tracking.
-                  </li>
-                  <li>
-                    Integrated Automatic Dependent Surveillance-Broadcast (ADS-B) flight
-                    data for real-time aircraft monitoring.
-                  </li>
-                  <li>
-                    Improved accuracy and reliability of radar measurements by combining
-                    orbital parameters with real-time positioning data.
-                  </li>
-                </ul>
-                <div class="chip-row">
-                  <span class="chip">Python</span>
-                  <span class="chip">Radar Processing</span>
-                  <span class="chip">TLE</span>
-                  <span class="chip">ADS-B</span>
-                </div>
-              </article>
+              </div>
             </div>
           </section>
+        </div>
 
-          <!-- Projects -->
-          <section id="projects" style="margin-top: 16px;">
-            <h2 class="section-title">
-              Projects
-            </h2>
+        <!-- ==================== RESEARCH TAB ==================== -->
+        <div class="tab-panel" id="tab-research">
+          <section>
+            <h2 class="section-title">Research & Publications</h2>
+            <p class="item-sub">
+              Selected publications and research work focused on networking security
+              and digital signal processing.
+            </p>
+            <ul class="pub-list">
+              <li>
+                <span class="pub-title">
+                  Detection of ARP Spoofing Attacks in Software Defined Networks
+                </span>
+                <br />
+                Saritakumar N, Anusuya K V, <strong>Sreehari Krishnakumar</strong>.
+                2023 International Conference on Intelligent Systems for Communication,
+                IoT and Security (ICISCoIS), Coimbatore, India, 2023.
+              </li>
+              <li>
+                <span class="pub-title">
+                  Digital Signal Processing on 3-Axis Accelerometer
+                </span>
+                <br />
+                <strong>Sreehari Krishnakumar</strong>, Vignesh Karthikeyan R,
+                Manoharan V K, Saritakumar N. 2023 International Conference on
+                Intelligent Systems for Communication, IoT and Security (ICISCoIS),
+                Coimbatore, India, 2023.
+              </li>
+            </ul>
+            <p class="item-sub" style="margin-top: 12px;">
+              You can add more items here later (e.g., course projects that feel like
+              research, open-source contributions, or under-review work).
+            </p>
+          </section>
+        </div>
 
+        <!-- ==================== PROJECTS TAB ==================== -->
+        <div class="tab-panel" id="tab-projects">
+          <section>
+            <h2 class="section-title">Projects</h2>
             <div class="timeline">
               <!-- 3D Convolution Accelerator -->
               <article class="item">
@@ -666,151 +897,52 @@
           </section>
         </div>
 
-        <!-- Right column -->
-        <div>
-          <!-- Education -->
-          <section id="education">
-            <h2 class="section-title">
-              Education
-            </h2>
-            <div class="timeline">
-              <article class="item">
-                <div class="item-header">
-                  <div class="item-title">
-                    University of Southern California (USC)
-                  </div>
-                  <div class="item-meta">Los Angeles, CA</div>
+        <!-- ==================== CONTACT TAB ==================== -->
+        <div class="tab-panel" id="tab-contact">
+          <section>
+            <h2 class="section-title">Contact</h2>
+            <div class="contact-grid">
+              <div class="contact-card">
+                <div class="contact-label">Email</div>
+                <div class="contact-main">
+                  <a href="mailto:sreehari.pvt@gmail.com">sreehari.pvt@gmail.com</a>
                 </div>
-                <p class="item-sub">
-                  Master of Science in Computer Engineering · Aug 2024 – May 2026
-                </p>
-                <ul class="item-bullets">
-                  <li>
-                    Coursework: EE457 (Computer Systems Organization), EE557 (Computer
-                    Systems Architecture), EE533 (Network Processor Design and Programming),
-                    EE451 (Parallel and Distributed Computing), EE511 (Machine Learning
-                    Hardware Accelerators), EE658 (Diagnosis &amp; Design of Reliable
-                    Digital Systems).
-                  </li>
-                </ul>
-              </article>
 
-              <article class="item">
-                <div class="item-header">
-                  <div class="item-title">
-                    PSG College of Technology
-                  </div>
-                  <div class="item-meta">Coimbatore, India</div>
+                <div class="contact-label" style="margin-top: 10px;">Phone</div>
+                <div class="contact-main">
+                  <a href="tel:+12138124400">(213) 812-4400</a>
                 </div>
-                <p class="item-sub">
-                  Bachelor of Engineering in Electronics and Communication Engineering ·
-                  Jul 2019 – Aug 2023
-                </p>
-              </article>
-            </div>
-          </section>
 
-          <!-- Skills -->
-          <section id="skills" style="margin-top: 16px;">
-            <h2 class="section-title">
-              Skills
-            </h2>
-            <div class="skills-grid">
-              <div>
-                <div class="skills-group-title">HDL &amp; Programming</div>
-                <div class="skills-chips">
-                  <span class="chip">Verilog</span>
-                  <span class="chip">VHDL (Basics)</span>
-                  <span class="chip">HLS</span>
-                  <span class="chip">MATLAB</span>
-                  <span class="chip">Python</span>
-                  <span class="chip">TCL</span>
-                  <span class="chip">C/C++</span>
-                  <span class="chip">CUDA</span>
-                  <span class="chip">Linux</span>
-                  <span class="chip">Bash</span>
-                  <span class="chip">OOP</span>
-                  <span class="chip">OpenMP</span>
+                <div class="contact-label" style="margin-top: 10px;">Location</div>
+                <div class="contact-main">
+                  Los Angeles, United States
                 </div>
               </div>
 
-              <div>
-                <div class="skills-group-title">EDA Tools</div>
-                <div class="skills-chips">
-                  <span class="chip">QuestaSim</span>
-                  <span class="chip">Synopsys Design Compiler</span>
-                  <span class="chip">PrimeTime</span>
-                  <span class="chip">Cadence Innovus</span>
-                  <span class="chip">Xilinx Vivado</span>
-                  <span class="chip">Xilinx ISE</span>
+              <div class="contact-card">
+                <div class="contact-label">Links</div>
+                <div class="contact-main">
+                  <p>
+                    💼
+                    <a href="https://www.linkedin.com/in/sreehari-krishnakumar/" target="_blank" rel="noopener">
+                      LinkedIn – Sreehari Krishnakumar
+                    </a>
+                  </p>
+                  <p>
+                    🐙
+                    <a href="https://github.com/sreeharikk25" target="_blank" rel="noopener">
+                      GitHub – @sreeharikk25
+                    </a>
+                  </p>
                 </div>
-              </div>
 
-              <div>
-                <div class="skills-group-title">Protocols</div>
-                <div class="skills-chips">
-                  <span class="chip">AXI</span>
-                  <span class="chip">GPIO</span>
-                  <span class="chip">APB</span>
-                  <span class="chip">AHB Lite</span>
-                  <span class="chip">Cache Coherency</span>
-                </div>
-              </div>
-
-              <div>
-                <div class="skills-group-title">Concepts &amp; Methodologies</div>
-                <div class="skills-chips">
-                  <span class="chip">RTL Design</span>
-                  <span class="chip">Computer Architecture</span>
-                  <span class="chip">DFT</span>
-                  <span class="chip">Emulation</span>
-                  <span class="chip">OoO Processors</span>
-                  <span class="chip">Superscalar CPU</span>
-                  <span class="chip">Tomasulo Algorithm</span>
-                  <span class="chip">CPU Microarchitecture</span>
-                  <span class="chip">GPU Architecture</span>
-                  <span class="chip">Caches</span>
-                  <span class="chip">Virtual Memory</span>
-                  <span class="chip">Low Power Optimization</span>
-                  <span class="chip">Static Timing Analysis</span>
-                  <span class="chip">Git</span>
-                  <span class="chip">CAM</span>
-                  <span class="chip">GPGPU</span>
-                  <span class="chip">ASIC Verification</span>
-                  <span class="chip">Image Processing</span>
-                  <span class="chip">Signal Processing</span>
-                  <span class="chip">Spectrum Analyzer</span>
-                  <span class="chip">Signal Generator</span>
+                <div class="contact-label" style="margin-top: 10px;">Availability</div>
+                <div class="contact-main">
+                  Open to internships and new grad roles in
+                  <strong>RTL, FPGA, HLS, and ML accelerators</strong>.
                 </div>
               </div>
             </div>
-          </section>
-
-          <!-- Publications -->
-          <section id="publications" style="margin-top: 16px;">
-            <h2 class="section-title">
-              Publications
-            </h2>
-            <ul class="pub-list">
-              <li>
-                <span class="pub-title">
-                  Detection of ARP Spoofing Attacks in Software Defined Networks
-                </span>
-                <br />
-                Saritakumar N, Anusuya K V, Sreehari Krishnakumar. 2023 International
-                Conference on Intelligent Systems for Communication, IoT and Security
-                (ICISCoIS), Coimbatore, India, 2023.
-              </li>
-              <li>
-                <span class="pub-title">
-                  Digital Signal Processing on 3-Axis Accelerometer
-                </span>
-                <br />
-                Sreehari Krishnakumar, Vignesh Karthikeyan R, Manoharan V K, Saritakumar N.
-                2023 International Conference on Intelligent Systems for Communication,
-                IoT and Security (ICISCoIS), Coimbatore, India, 2023.
-              </li>
-            </ul>
           </section>
         </div>
       </div>
@@ -822,8 +954,30 @@
   </div>
 
   <script>
+    // Year in footer
     document.getElementById("year").textContent =
       new Date().getFullYear().toString();
+
+    // Simple tab logic
+    const tabButtons = document.querySelectorAll(".tab-btn");
+    const panels = document.querySelectorAll(".tab-panel");
+
+    tabButtons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const target = btn.getAttribute("data-tab");
+        // activate button
+        tabButtons.forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+        // activate panel
+        panels.forEach((p) => {
+          if (p.id === "tab-" + target) {
+            p.classList.add("active");
+          } else {
+            p.classList.remove("active");
+          }
+        });
+      });
+    });
   </script>
 </body>
 </html>
